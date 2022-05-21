@@ -25,6 +25,8 @@ public:
 
 	bool isAssignmentCompleted();
 
+	int getDueDate();
+
 	string getCourseName();
 
 	string displayCompletedOrNot();

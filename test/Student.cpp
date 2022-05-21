@@ -1,6 +1,7 @@
 #include "Student.h"
 #include "Assignment.h"
 #include <vector>
+#include "BST.h"
 
 //default conmstructor
 Student::Student() {
@@ -56,6 +57,17 @@ void Student::displayInProgress()
     }
 }
 
+void Student::searchByDueDate(int date)
+{
+
+}
+
+//display due dates from BST
+void Student::displayDueDates()
+{
+    b.Inorder(root);
+}
+
 //display all assignments regardless of completion status
 void Student::displayAssignments()
 {
@@ -77,7 +89,8 @@ void Student::addAssignment()
     int due;
     string nm;
     string response;
-    bool isComp;
+    bool isComp; 
+    
 
     while (counter < getAssignmentCount()) {
         cout << "Assignment " << counter + 1 << " is due in how many days?: ";
@@ -93,6 +106,12 @@ void Student::addAssignment()
 
         //add assignment object to vector of assignments
         assignments.push_back(Assignment(due, nm, isComp));
+
+        //insert assignment due dates into BST
+        if(counter == 0)
+            root = b.Insert(root, assignments[counter].getDueDate());
+        else
+            b.Insert(root, assignments[counter].getDueDate());
 
 
         counter++;

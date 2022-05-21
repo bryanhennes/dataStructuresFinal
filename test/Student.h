@@ -3,6 +3,7 @@
 #include <string>
 #include <iostream> 
 #include "Assignment.h"
+#include "BST.h"
 #include <vector>
 
 using namespace std;
@@ -14,6 +15,7 @@ private:
 	int age;
 	int numAssignments;
 	vector<Assignment> assignments;
+	BST b, * root = NULL;
 	//start by using simple array of assignment numbers to test
 	
 public:
@@ -27,6 +29,8 @@ public:
 	void displayAssignments();
 	void changeDueDate();
 	void displayInProgress();
+	void searchByDueDate(int date);
+	void displayDueDates();
 
 };
 

@@ -1,10 +1,11 @@
-
+#pragma once
+#include "Assignment.h"
 #include <iostream>
-    using namespace std;
+using namespace std;
 
-    class BST {
-        int data;
-        BST* left, * right;
+class BST {
+    int data;
+    BST* left, * right;
 
     public:
         // Default constructor.

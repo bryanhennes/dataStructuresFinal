@@ -27,6 +27,10 @@ bool Assignment::isAssignmentCompleted()
 	return false;
 }
 
+int Assignment::getDueDate() {
+	return dueDate;
+}
+
 string Assignment::getCourseName() {
 	return courseName;
 }

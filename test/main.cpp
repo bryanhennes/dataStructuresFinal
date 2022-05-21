@@ -20,7 +20,7 @@ int main() {
     //create menu
 
     while (choice != "E") {
-        cout << "Welcome to the ultimate school assignment organzization tool! What would you like to do?\n[A]Add assignments\n[U]Update Assignment Due Dates\n[V]View Assignments\n[I]View Assignments Currently in Progress\n[E]Exit\n->";
+        cout << "Welcome to the ultimate school assignment organzization tool! What would you like to do?\n[A]Add assignments\n[U]Update Assignment Due Dates\n[V]View Assignments\n[I]View Assignments Currently in Progress\n[S]Search by Due Date\n[E]Exit\n->";
         cin >> choice;
 
         if (choice == "A") {
@@ -35,8 +35,11 @@ int main() {
             bryan.displayAssignments();
         else if (choice == "I")
             bryan.displayInProgress();
+        else if (choice == "S")
+            bryan.displayInProgress();
 
     }
+    bryan.displayDueDates();
    //cout << ", Enter how many assignments you have: ";
    /* cin >> numOfAssignments;
     bryan.setAssignments(numOfAssignments);

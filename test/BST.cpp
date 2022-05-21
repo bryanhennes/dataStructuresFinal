@@ -1,4 +1,5 @@
 #include "BST.h"
+#include "Assignment.h"
 // Default Constructor definition.
 BST::BST()
     : data(0)
