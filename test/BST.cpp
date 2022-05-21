@@ -41,72 +41,99 @@ BST* BST::search(BST* strRoot, string value)
     if (strRoot == NULL || strRoot->strData == value)
         return strRoot;
 
-    // Key is greater than root's key
+    //key is greater than root's key
     if (strRoot->strData < value)
         return search(strRoot->right, value);
 
-    // Key is smaller than root's key
+    //key is smaller than root's key
     return search(strRoot->left, value);
 }
+
+//remove assignment node with specific course name
+BST* BST::removeNode(BST* root, string name)
+{
+    // base case
+    if (root == NULL)
+        return root;
+
+    //if key to be deleted is smaller than the root's key, then it lies in left subtree
+    if (name < root->strData)
+        root->left = removeNode(root->left, name);
+
+    //if key to be deleted is greater than the root's key, then it lies in right subtree
+    else if (name > root->strData)
+        root->right = removeNode(root->right, name);
+
+    // if key is same as root's key, then this is the node to be deleted
+    else {
+        //node has no child
+        if (root->left == NULL and root->right == NULL)
+            return NULL;
+
+        //node with only one child or no child
+        else if (root->left == NULL) {
+            BST* temp = root->right;
+            free(root);
+            return temp;
+        }
+        else if (root->right == NULL) {
+            BST* temp = root->left;
+            free(root);
+            return temp;
+        }
+
+        return root;
+    }
+}
+
+
 
 // Insert function definition.
 BST* BST::Insert(BST* root, int value)
 {
     if (!root) {
-        // Insert the first node, if root is NULL.
+        //insert the first node if root is NULL
         return new BST(value);
     }
 
-    // Insert data.
+    //insert data
     if (value > root->data) {
-        // Insert right node data, if the 'value'
-        // to be inserted is greater than 'root' node data.
-
-        // Process right nodes.
+        // insert right node data if the value to be isnerted is greater than root node data
         root->right = Insert(root->right, value);
     }
     else {
-        // Insert left node data, if the 'value'
-        // to be inserted is greater than 'root' node data.
-
-        // Process left nodes.
+        //insert left node data, if the value to be inserted is greater than root node data
         root->left = Insert(root->left, value);
     }
 
-    // Return 'root' node, after insertion.
+    //return root node after insertion
     return root;
 }
 
-// Insert function definitionf or string values
+//insert function definition for string values
 BST* BST::Insert(BST* strRoot, string value)
 {
     if (!strRoot) {
-        // Insert the first node, if root is NULL.
+        //insert the first node if root is NULL
         return new BST(value);
     }
 
-    // Insert data.
+    //insert data
     if (value > strRoot->strData) {
-        // Insert right node data, if the 'value'
-        // to be inserted is greater than 'root' node data.
 
-        // Process right nodes.
+        // insert right node data if the value to be isnerted is greater than root node data
         strRoot->right = Insert(strRoot->right, value);
     }
     else {
-        // Insert left node data, if the 'value'
-        // to be inserted is greater than 'root' node data.
-
-        // Process left nodes.
+        //insert left node data, if the value to be inserted is greater than root node data
         strRoot->left = Insert(strRoot->left, value);
     }
 
-    // Return 'root' node, after insertion.
+    //return root node after insertion
     return strRoot;
 }
 
-// Inorder traversal function.
-// This gives data in sorted order.
+//display due date values from due date BST
 void BST::Inorder(BST* root)
 {
     if (!root) {

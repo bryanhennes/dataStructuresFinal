@@ -30,6 +30,9 @@ class BST {
         // Search Function for course name values
         BST* search(BST*, string);
 
+        // Function to remove nodes with a specific course name
+        BST* removeNode(BST*, string);
+
         // Inorder traversal of due date values
         void Inorder(BST*);
 

@@ -21,7 +21,7 @@ int main() {
 
     //create menu
     while (choice != "E") {
-        cout << "\nWhat would you like to do ? \n[A]Add assignments\n[U]Update Assignment Due Dates\n[V]View Assignments\n[I]View Assignments Currently in Progress\n[D]Search by Due Date\n[N]Search by Course Name\n[E]Exit\n->";
+        cout << "\nWhat would you like to do ? \n[A]Add assignments\n[U]Update Assignment Due Dates\n[V]View Assignments\n[I]View Assignments Currently in Progress\n[D]Search by Due Date\n[N]Search by Course Name\n[R]Remove Assignments\n[E]Exit\n->";
         cin >> choice;
         transform(choice.begin(), choice.end(), choice.begin(), ::toupper);
         if (choice == "A") {
@@ -47,6 +47,12 @@ int main() {
             string searchName;
             cin >> searchName;
             bryan.searchByCourse(searchName);
+        }
+        else if (choice == "R") {
+            cout << "Enter what course you want to remove assignments for: ";
+            string searchName;
+            cin >> searchName;
+            bryan.removeAssignment(searchName);
         }
         else
             cout << "Please enter a valid option: " << endl;

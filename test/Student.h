@@ -35,6 +35,7 @@ public:
 	void searchByCourse(string name);
 	void displayDueDates();
 	void displayCourseNames();
+	void removeAssignment(string name);
 
 };
 

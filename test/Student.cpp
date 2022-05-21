@@ -106,6 +106,20 @@ void Student::displayCourseNames()
     courseTree.InorderString(strRoot);
 }
 
+//function to remove assignment by courseName
+void Student::removeAssignment(string name)
+{
+    for (int i = 0; i < assignments.size(); i++) {
+        if (assignments[i].getCourseName() == name) {
+            courseTree.removeNode(strRoot, assignments[i].getCourseName());
+            assignments.erase(assignments.begin()+i);
+            i--;
+        }
+    }
+
+    cout << name << " assignments have been removed." << endl;
+}
+
 //display all assignments regardless of completion status
 void Student::displayAssignments()
 {
