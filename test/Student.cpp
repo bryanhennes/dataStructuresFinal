@@ -60,7 +60,7 @@ void Student::displayInProgress()
 //search BST for due date
 void Student::searchByDueDate(int date)
 {
-    if (b.search(root, date)) {
+    if (dateTree.search(root, date)) {
         cout << "Here are all assignments due in " << date << " days: " << endl;
         for (int i = 0; i < assignments.size(); i++) {
             //display any asignments with that due date if the due date is found in the BST
@@ -73,10 +73,30 @@ void Student::searchByDueDate(int date)
         cout << "We did not find a class due in " << date << " days." << endl;
 }
 
+void Student::searchByCourse(string name)
+{
+    if (courseTree.search(strRoot, name)) {
+        cout << "Here are all assignments due from " << name << ": " << endl;
+        for (int i = 0; i < assignments.size(); i++) {
+            //display any asignments with that due date if the due date is found in the BST
+            if (assignments[i].getCourseName() == name) {
+                assignments[i].displayAssignment();
+            }
+        }
+    }
+    else
+        cout << "We did not find a class due in " << name << "." << endl;
+}
+
 //display due dates from BST
 void Student::displayDueDates()
 {
-    b.Inorder(root);
+    dateTree.Inorder(root);
+}
+
+void Student::displayCourseNames()
+{
+    courseTree.InorderString(strRoot);
 }
 
 //display all assignments regardless of completion status
@@ -119,10 +139,14 @@ void Student::addAssignment()
         assignments.push_back(Assignment(due, nm, isComp));
 
         //insert assignment due dates into BST
-        if(counter == 0)
-            root = b.Insert(root, assignments[counter].getDueDate());
-        else
-            b.Insert(root, assignments[counter].getDueDate());
+        if (counter == 0) {
+            root = dateTree.Insert(root, assignments[counter].getDueDate());
+            strRoot = courseTree.Insert(strRoot, assignments[counter].getCourseName());
+        }
+        else {
+            dateTree.Insert(root, assignments[counter].getDueDate());
+            courseTree.Insert(strRoot, assignments[counter].getCourseName());
+        }
 
 
         counter++;

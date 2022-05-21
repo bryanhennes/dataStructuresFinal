@@ -5,23 +5,36 @@ using namespace std;
 
 class BST {
     int data;
+    string strData;
     BST* left, * right;
 
     public:
         // Default constructor.
         BST();
 
-        // Parameterized constructor.
+        // Parameterized constructor for due date BST
         BST(int);
 
-        // Insert function.
+        // Parameterized constructor for course name BST
+        BST(string);
+
+        // Insert function for due date values
         BST* Insert(BST*, int);
 
-        // Search Function
+        // Insert function for course name values
+        BST* Insert(BST*, string);
+
+        // Search Function for due date values
         BST* search(BST*, int);
 
-        // Inorder traversal.
+        // Search Function for course name values
+        BST* search(BST*, string);
+
+        // Inorder traversal of due date values
         void Inorder(BST*);
+
+        // Inorder traversal of course name values
+        void InorderString(BST*);
     };
 
     

@@ -15,8 +15,10 @@ private:
 	int age;
 	int numAssignments;
 	vector<Assignment> assignments;
-	BST b, * root = NULL;
-	//start by using simple array of assignment numbers to test
+	//BST for due dates
+	BST dateTree, * root = NULL;
+	//BST for course names
+	BST courseTree, * strRoot = NULL;
 	
 public:
 	Student();
@@ -30,7 +32,9 @@ public:
 	void changeDueDate();
 	void displayInProgress();
 	void searchByDueDate(int date);
+	void searchByCourse(string name);
 	void displayDueDates();
+	void displayCourseNames();
 
 };
 

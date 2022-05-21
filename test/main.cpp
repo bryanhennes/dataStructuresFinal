@@ -12,15 +12,13 @@ using namespace std;
 int main() {
 
 	Student bryan = Student("Bryan", 28);
-	//cout << bryan.getName();
     int searchVal;
     int numOfAssignments = 0;
     string choice;
 
     //create menu
-
     while (choice != "E") {
-        cout << "Welcome to the ultimate school assignment organzization tool! What would you like to do?\n[A]Add assignments\n[U]Update Assignment Due Dates\n[V]View Assignments\n[I]View Assignments Currently in Progress\n[S]Search by Due Date\n[E]Exit\n->";
+        cout << "Welcome to the ultimate school assignment organzization tool! What would you like to do?\n[A]Add assignments\n[U]Update Assignment Due Dates\n[V]View Assignments\n[I]View Assignments Currently in Progress\n[D]Search by Due Date\n[N]Search by Course Name\n[E]Exit\n->";
         cin >> choice;
 
         if (choice == "A") {
@@ -35,43 +33,23 @@ int main() {
             bryan.displayAssignments();
         else if (choice == "I")
             bryan.displayInProgress();
-        else if (choice == "S") {
+        else if (choice == "D") {
             cout << "Enter due date to search for: ";
             int searchNum;
             cin >> searchNum;
             bryan.searchByDueDate(searchNum);
         }
+        else if (choice == "N") {
+            cout << "Enter course name to search for: ";
+            string searchName;
+            cin >> searchName;
+            bryan.searchByCourse(searchName);
+        }
            
 
     }
-    bryan.displayDueDates();
-   //cout << ", Enter how many assignments you have: ";
-   /* cin >> numOfAssignments;
-    bryan.setAssignments(numOfAssignments);
-    bryan.addAssignment();
-    bryan.displayAssignments();*/
-    
+    //bryan.displayCourseNames();
   
-    
-
- 
-    
-    /*BST b, * root = NULL;
-    root = b.Insert(root, 50);
-    b.Insert(root, 30);
-    b.Insert(root, 20);
-    b.Insert(root, 40);
-    b.Insert(root, 70);
-    b.Insert(root, 60);
-    b.Insert(root, 80);
-
-    b.Inorder(root);*/
-
-    /*cout << "Enter value to search for: ";
-    cin >> searchVal;
-
-    bool val = b.search(root, searchVal);
-    cout << val;*/
 
 
 	return 0;
