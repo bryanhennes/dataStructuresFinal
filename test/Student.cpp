@@ -2,31 +2,35 @@
 #include "Assignment.h"
 #include <vector>
 
-
+//default conmstructor
 Student::Student() {
 	name = "John Doe";
 	age = 18;
 }
 
+//parameterized constructor
 Student::Student(string nm, int ag) {
 	name = nm;
 	age = ag;
 }
 
-
+//return student's name
 string Student::getName() {
 	return(name);
 }
 
+//set assignment count
 void Student::setAssignments(int num)
 {
 	numAssignments = num;
 }
 
+//get amount of assignments
 int Student::getAssignmentCount() {
     return numAssignments;
 }
 
+//change due date of assignments
 void Student::changeDueDate() {
     string choice;
     int newDate;
@@ -42,20 +46,31 @@ void Student::changeDueDate() {
     }
 }
 
+//display all assignments that are currently in progress
+void Student::displayInProgress()
+{
+    cout << "Current assignments in progress: " << endl;
+    for (int i = 0; i < assignments.size(); i++) {
+        if (assignments[i].isAssignmentCompleted())
+            cout << "-" << assignments[i].getCourseName() << endl;
+    }
+}
+
+//display all assignments regardless of completion status
 void Student::displayAssignments()
 {
-   
     for (int i = 0; i < assignments.size(); i++) {
         assignments[i].displayAssignment();
     }
 }
 
-
+//display assignment count
 void Student::displayAssignmentAmount()
 {
 	cout << name << " has " << numAssignments << " assignments to finish.";
 }
 
+//add assignments
 void Student::addAssignment()
 {
     int counter = 0;

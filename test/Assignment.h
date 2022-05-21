@@ -23,6 +23,10 @@ public:
 
 	void displayAssignment();
 
+	bool isAssignmentCompleted();
+
+	string getCourseName();
+
 	string displayCompletedOrNot();
 
 };

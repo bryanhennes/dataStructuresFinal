@@ -20,6 +20,17 @@ void Assignment::displayAssignment() {
 	cout << courseName << " assignment is due in " << dueDate << " days and " << displayCompletedOrNot() << endl;
 }
 
+bool Assignment::isAssignmentCompleted()
+{
+	if (isCompleted)
+		return true;
+	return false;
+}
+
+string Assignment::getCourseName() {
+	return courseName;
+}
+
 string Assignment::displayCompletedOrNot()
 {
 	if (isCompleted)

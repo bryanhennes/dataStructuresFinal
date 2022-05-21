@@ -26,6 +26,7 @@ public:
 	int getAssignmentCount();
 	void displayAssignments();
 	void changeDueDate();
+	void displayInProgress();
 
 };
 
