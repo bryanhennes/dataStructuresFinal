@@ -1,6 +1,7 @@
 #include "Student.h"
 #include "Assignment.h"
 #include <vector>
+#include <algorithm>
 #include "BST.h"
 
 //default conmstructor
@@ -38,6 +39,7 @@ void Student::changeDueDate() {
     for (int i = 0; i < assignments.size(); i++) {
         cout << "Would you like to change the due date for assignment " << i+1 << "?: Y or N: ";
         cin >> choice;
+        transform(choice.begin(), choice.end(), choice.begin(), ::toupper);
         if (choice == "Y") {
             cout << "Okay when is this assignment due?: ";
             cin >> newDate;
@@ -55,9 +57,10 @@ void Student::displayInProgress()
         if (assignments[i].isAssignmentCompleted())
             cout << "-" << assignments[i].getCourseName() << endl;
     }
+    cout << endl;
 }
 
-//search BST for due date
+//search BST for due date values by due date
 void Student::searchByDueDate(int date)
 {
     if (dateTree.search(root, date)) {
@@ -71,8 +74,10 @@ void Student::searchByDueDate(int date)
     }
     else
         cout << "We did not find a class due in " << date << " days." << endl;
+    cout << endl;
 }
 
+//function to search BST of course name values by course name
 void Student::searchByCourse(string name)
 {
     if (courseTree.search(strRoot, name)) {
@@ -86,6 +91,7 @@ void Student::searchByCourse(string name)
     }
     else
         cout << "We did not find a class due in " << name << "." << endl;
+    cout << endl;
 }
 
 //display due dates from BST
@@ -94,6 +100,7 @@ void Student::displayDueDates()
     dateTree.Inorder(root);
 }
 
+//display all course names from BST
 void Student::displayCourseNames()
 {
     courseTree.InorderString(strRoot);
@@ -105,6 +112,8 @@ void Student::displayAssignments()
     for (int i = 0; i < assignments.size(); i++) {
         assignments[i].displayAssignment();
     }
+
+    cout << endl;
 }
 
 //display assignment count
@@ -130,6 +139,7 @@ void Student::addAssignment()
         cin >> nm;
         cout << "Is assignment " << counter + 1 << " completed?: Y or N: ";
         cin >> response;
+        transform(response.begin(), response.end(), response.begin(), ::toupper);
         if (response == "Y")
             isComp = true;
         else
@@ -138,7 +148,7 @@ void Student::addAssignment()
         //add assignment object to vector of assignments
         assignments.push_back(Assignment(due, nm, isComp));
 
-        //insert assignment due dates into BST
+        //insert values into both BSTs
         if (counter == 0) {
             root = dateTree.Insert(root, assignments[counter].getDueDate());
             strRoot = courseTree.Insert(strRoot, assignments[counter].getCourseName());

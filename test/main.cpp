@@ -4,6 +4,7 @@
 #include "Assignment.h"
 #include <vector>
 #include <string>
+#include <algorithm> 
 
 using namespace std;
 
@@ -16,13 +17,15 @@ int main() {
     int numOfAssignments = 0;
     string choice;
 
+    cout << "Welcome to the ultimate school assignment organzization tool!" << endl;
+
     //create menu
     while (choice != "E") {
-        cout << "Welcome to the ultimate school assignment organzization tool! What would you like to do?\n[A]Add assignments\n[U]Update Assignment Due Dates\n[V]View Assignments\n[I]View Assignments Currently in Progress\n[D]Search by Due Date\n[N]Search by Course Name\n[E]Exit\n->";
+        cout << "\nWhat would you like to do ? \n[A]Add assignments\n[U]Update Assignment Due Dates\n[V]View Assignments\n[I]View Assignments Currently in Progress\n[D]Search by Due Date\n[N]Search by Course Name\n[E]Exit\n->";
         cin >> choice;
-
+        transform(choice.begin(), choice.end(), choice.begin(), ::toupper);
         if (choice == "A") {
-            cout << bryan.getName() << ", Enter how many assignments you have: ";
+            cout << bryan.getName() << ", Enter how many assignments you have to add: ";
             cin >> numOfAssignments;
             bryan.setAssignments(numOfAssignments);
             bryan.addAssignment();
@@ -45,10 +48,11 @@ int main() {
             cin >> searchName;
             bryan.searchByCourse(searchName);
         }
+        else
+            cout << "Please enter a valid option: " << endl;
            
 
     }
-    //bryan.displayCourseNames();
   
 
 
