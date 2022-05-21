@@ -5,6 +5,7 @@
 #include "Assignment.h"
 #include "BST.h"
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -19,6 +20,8 @@ private:
 	BST dateTree, * root = NULL;
 	//BST for course names
 	BST courseTree, * strRoot = NULL;
+	ofstream MyFile;
+	ifstream MyTextFile;
 	
 public:
 	Student();
@@ -36,6 +39,8 @@ public:
 	void displayDueDates();
 	void displayCourseNames();
 	void removeAssignment(string name);
+	void saveToFile();
+	void readFromFile();
 
 };
 

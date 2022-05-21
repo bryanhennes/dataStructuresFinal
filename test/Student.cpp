@@ -3,6 +3,7 @@
 #include <vector>
 #include <algorithm>
 #include "BST.h"
+#include <fstream>
 
 //default conmstructor
 Student::Student() {
@@ -118,6 +119,60 @@ void Student::removeAssignment(string name)
     }
 
     cout << name << " assignments have been removed." << endl;
+}
+
+void Student::saveToFile()
+{
+    ofstream MyFile("Text.txt");
+    for (int i = 0; i < assignments.size(); i++) {
+        MyFile << assignments[i].getCourseName() << "," << assignments[i].getDueDate() << "," << assignments[i].isAssignmentCompleted() << endl;
+    }
+}
+
+void Student::readFromFile()
+{
+    string text;
+    int counter = 0;
+    string due;
+    int dueDate;
+    string nm;
+    bool isComp;
+    string isCompleted;
+ 
+    MyTextFile.open("Text.txt");
+    // Use a while loop together with the getline() function to read the file line by line
+    while (getline(MyTextFile, text)) {
+  
+      
+        //get saved assignments from file
+        nm = text.substr(0, text.find(","));
+
+        text.erase(0, text.find(",") + 1);
+        due = text.substr(0, text.find(","));
+   
+        text.erase(0, text.find(",") + 1);
+        isCompleted = text;
+    
+
+        dueDate = stoi(due);
+        isComp = stoi(isCompleted);
+
+        assignments.push_back(Assignment(dueDate, nm, isComp));
+
+        //insert values into both BSTs
+        if (counter == 0) {
+            root = dateTree.Insert(root, assignments[counter].getDueDate());
+            strRoot = courseTree.Insert(strRoot, assignments[counter].getCourseName());
+        }
+        else {
+            dateTree.Insert(root, assignments[counter].getDueDate());
+            courseTree.Insert(strRoot, assignments[counter].getCourseName());
+        }
+        counter++;
+    }
+
+    // Close the file
+    MyTextFile.close();
 }
 
 //display all assignments regardless of completion status

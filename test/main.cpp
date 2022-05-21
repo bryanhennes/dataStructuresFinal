@@ -4,7 +4,8 @@
 #include "Assignment.h"
 #include <vector>
 #include <string>
-#include <algorithm> 
+#include <algorithm>
+#include <fstream>
 
 using namespace std;
 
@@ -16,6 +17,9 @@ int main() {
     int searchVal;
     int numOfAssignments = 0;
     string choice;
+    //load previously saved assignments
+    bryan.readFromFile();
+
 
     cout << "Welcome to the ultimate school assignment organzization tool!" << endl;
 
@@ -59,6 +63,7 @@ int main() {
            
 
     }
+    bryan.saveToFile();
   
 
 
