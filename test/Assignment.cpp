@@ -12,7 +12,7 @@ Assignment::Assignment(int dD, string courseNm, bool isComp) {
 	isCompleted = isComp;
 }
 
-void Assignment::setDueDate(int date) {
+void Assignment::updateDueDate(int date) {
 	dueDate = date;
 }
 

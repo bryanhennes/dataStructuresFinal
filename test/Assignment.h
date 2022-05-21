@@ -19,7 +19,7 @@ public:
 	//parameterized constructor
 	Assignment(int dD, string courseNm, bool isComp = false);
 
-	void setDueDate(int date);
+	void updateDueDate(int date);
 
 	void displayAssignment();
 

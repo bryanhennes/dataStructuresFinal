@@ -25,6 +25,7 @@ public:
 	void addAssignment();
 	int getAssignmentCount();
 	void displayAssignments();
+	void changeDueDate();
 
 };
 

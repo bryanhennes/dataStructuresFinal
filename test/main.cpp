@@ -12,16 +12,34 @@ using namespace std;
 int main() {
 
 	Student bryan = Student("Bryan", 28);
-	cout << bryan.getName();
+	//cout << bryan.getName();
     int searchVal;
     int numOfAssignments = 0;
-    
+    string choice;
 
-    cout << ", Enter how many assignments you have: ";
-    cin >> numOfAssignments;
+    //create menu
+
+    while (choice != "E") {
+        cout << "Welcome to the ultimate school assignment organzization tool! What would you like to do?\n[A]Add assignments\n[U]Update Assignment Due Dates\n[V]View Assignments\n[E]Exit";
+        cin >> choice;
+
+        if (choice == "A") {
+            cout << bryan.getName() << ", Enter how many assignments you have: ";
+            cin >> numOfAssignments;
+            bryan.setAssignments(numOfAssignments);
+            bryan.addAssignment();
+        }
+        else if (choice == "U")
+            bryan.changeDueDate();
+        else if (choice == "V")
+            bryan.displayAssignments();
+
+    }
+   //cout << ", Enter how many assignments you have: ";
+   /* cin >> numOfAssignments;
     bryan.setAssignments(numOfAssignments);
     bryan.addAssignment();
-    bryan.displayAssignments();
+    bryan.displayAssignments();*/
     
   
     

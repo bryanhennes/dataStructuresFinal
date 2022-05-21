@@ -27,6 +27,21 @@ int Student::getAssignmentCount() {
     return numAssignments;
 }
 
+void Student::changeDueDate() {
+    string choice;
+    int newDate;
+    for (int i = 0; i < assignments.size(); i++) {
+        cout << "Would you like to change the due date for assignment " << i+1 << "?: Y or N: ";
+        cin >> choice;
+        if (choice == "Y") {
+            cout << "Okay when is this assignment due?: ";
+            cin >> newDate;
+            assignments[i].updateDueDate(newDate);
+        }
+            
+    }
+}
+
 void Student::displayAssignments()
 {
    
