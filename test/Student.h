@@ -13,7 +13,7 @@ private:
 	string name;
 	int age;
 	int numAssignments;
-	//vector<Assignment> assignments;
+	vector<Assignment> assignments;
 	//start by using simple array of assignment numbers to test
 	
 public:
@@ -22,11 +22,9 @@ public:
 	string getName();
 	void setAssignments(int num);
 	void displayAssignmentAmount();
-	//void addAssignment();
+	void addAssignment();
 	int getAssignmentCount();
-	//void displayAssignments();
-	//vector<Assignment> getAssignmentVector();
-
+	void displayAssignments();
 
 };
 
