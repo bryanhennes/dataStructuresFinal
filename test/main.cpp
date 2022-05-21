@@ -35,8 +35,13 @@ int main() {
             bryan.displayAssignments();
         else if (choice == "I")
             bryan.displayInProgress();
-        else if (choice == "S")
-            bryan.displayInProgress();
+        else if (choice == "S") {
+            cout << "Enter due date to search for: ";
+            int searchNum;
+            cin >> searchNum;
+            bryan.searchByDueDate(searchNum);
+        }
+           
 
     }
     bryan.displayDueDates();

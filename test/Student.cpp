@@ -57,9 +57,20 @@ void Student::displayInProgress()
     }
 }
 
+//search BST for due date
 void Student::searchByDueDate(int date)
 {
-
+    if (b.search(root, date)) {
+        cout << "Here are all assignments due in " << date << " days: " << endl;
+        for (int i = 0; i < assignments.size(); i++) {
+            //display any asignments with that due date if the due date is found in the BST
+            if (assignments[i].getDueDate() == date) {
+                assignments[i].displayAssignment();
+            }
+        }
+    }
+    else
+        cout << "We did not find a class due in " << date << " days." << endl;
 }
 
 //display due dates from BST
